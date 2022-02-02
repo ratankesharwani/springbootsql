@@ -55,4 +55,15 @@ public class EmployeeService implements IEmployeeService{
             return employeeRepository.save(employee);
         }
     }
+
+    @Override
+    public Boolean deleteEmployee(Long employeeId) {
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        if(employee.isPresent()) {
+            employeeRepository.delete(employee.get());
+            return true;
+        } else {
+            return  false;
+        }
+    }
 }

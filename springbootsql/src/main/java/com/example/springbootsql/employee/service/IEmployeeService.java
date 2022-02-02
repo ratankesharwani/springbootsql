@@ -10,4 +10,6 @@ public interface IEmployeeService {
     Employee createEmployee(Employee employee);
 
     Employee updateEmployeeDetatils(Long employeeId, Employee employee);
+
+    Boolean deleteEmployee(Long employeeId);
 }

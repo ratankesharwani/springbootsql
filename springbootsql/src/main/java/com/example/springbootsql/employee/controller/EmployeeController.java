@@ -34,8 +34,9 @@ public class EmployeeController {
        return updatedEmployeeDetails;
     }
 
-    @DeleteMapping()
-    public void deleteEmployee() {
-        System.out.print("delete Employee");
+    @DeleteMapping("{employeeId}")
+    public Boolean deleteEmployee(@PathVariable("employeeId") Long employeeId) {
+        Boolean deleted = employeeService.deleteEmployee(employeeId);
+        return deleted;
     }
 }
