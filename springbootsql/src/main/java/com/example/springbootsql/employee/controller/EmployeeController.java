@@ -5,6 +5,7 @@ import com.example.springbootsql.employee.service.IEmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @RestController
@@ -26,9 +27,11 @@ public class EmployeeController {
        return createdEmployee;
     }
 
-    @PutMapping()
-    public void updateEmployee() {
+    @PutMapping("{employeeId}")
+    public Employee updateEmployee(@PathVariable("employeeId") Long employeeId, @RequestBody Employee employee) {
         System.out.print("update Employee");
+       Employee updatedEmployeeDetails = employeeService.updateEmployeeDetatils(employeeId,employee);
+       return updatedEmployeeDetails;
     }
 
     @DeleteMapping()
