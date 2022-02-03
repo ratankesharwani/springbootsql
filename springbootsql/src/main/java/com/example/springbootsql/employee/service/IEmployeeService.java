@@ -12,4 +12,6 @@ public interface IEmployeeService {
     Employee updateEmployeeDetatils(Long employeeId, Employee employee);
 
     Boolean deleteEmployee(Long employeeId);
+
+    List<Employee> createEmployee(List<Employee> employees);
 }

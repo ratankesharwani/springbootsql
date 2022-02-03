@@ -27,9 +27,14 @@ public class EmployeeController {
        return createdEmployee;
     }
 
+    @PostMapping("/multiple")
+    public List<Employee> createEmployee(@RequestBody List<Employee> employees) {
+        List<Employee> outputEmployees = employeeService.createEmployee(employees);
+        return outputEmployees;
+    }
+
     @PutMapping("{employeeId}")
     public Employee updateEmployee(@PathVariable("employeeId") Long employeeId, @RequestBody Employee employee) {
-        System.out.print("update Employee");
        Employee updatedEmployeeDetails = employeeService.updateEmployeeDetatils(employeeId,employee);
        return updatedEmployeeDetails;
     }

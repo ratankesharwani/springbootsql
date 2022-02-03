@@ -5,6 +5,7 @@ import com.example.springbootsql.employee.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,5 +66,11 @@ public class EmployeeService implements IEmployeeService{
         } else {
             return  false;
         }
+    }
+
+    @Override
+    public List<Employee> createEmployee(List<Employee> employees) {
+        List<Employee> response = employeeRepository.saveAll(employees);
+        return response;
     }
 }

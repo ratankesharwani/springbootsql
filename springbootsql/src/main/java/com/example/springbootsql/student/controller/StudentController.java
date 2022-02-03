@@ -1,24 +1,45 @@
 package com.example.springbootsql.student.controller;
 
+import com.example.springbootsql.student.model.Student;
+import com.example.springbootsql.student.service.IStudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+
 @RestController
+@RequestMapping("/api/v0/student")
 public class StudentController {
-    @GetMapping("students")
-    public void getStudents() {
-        System.out.println("Get Students");
+    @Autowired
+    private IStudentService studentService;
+
+    @GetMapping()
+    public List<Student> getStudents() {
+        List<Student> student = studentService.getStudent();
+        return student;
     }
-    @PutMapping("students")
-    public void putStudents()
-    {
-        System.out.println("Put Students");
+    @PutMapping("{studentId}")
+    public Student putStudent(@PathVariable("studentId") Long studentId , @RequestBody Student student) {
+     Student putStudent = studentService.putStudents(studentId,student);
+     return putStudent;
     }
-    @PostMapping("students")
-    public void postStudents(){
-        System.out.println("Post Student");
+
+    @GetMapping("{studentId}")
+    public Student getStudent(@PathVariable("studentId") Long studentId){
+        Student student = studentService.getSpecificStudent(studentId);
+        return student;
     }
-    @DeleteMapping("students")
-    public void deleteStudents(){
-        System.out.println("Delete Students");
+
+
+    @PostMapping()
+    public Student postStudents(@RequestBody Student student){
+        Student postStudents = studentService.postStudents(student);
+        return postStudents;
+    }
+    @DeleteMapping("{studentId}")
+    public boolean deleteStudents(@PathVariable("studentId") Long studentId){
+        boolean deletedStudent = studentService.deleteStudent(studentId);
+        return deletedStudent;
     }
 }
