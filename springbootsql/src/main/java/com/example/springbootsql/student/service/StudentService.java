@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class StudentService implements IStudentService{
@@ -75,5 +76,11 @@ public class StudentService implements IStudentService{
         else {
             return null;
         }
+    }
+
+    @Override
+    public List<Student> getStudentByIds(Set<Long> studentIds) {
+        List<Student> students = studentRepository.findAllById(studentIds);
+        return students;
     }
 }

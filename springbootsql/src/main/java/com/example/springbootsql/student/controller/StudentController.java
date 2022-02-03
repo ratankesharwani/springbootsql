@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/v0/student")
@@ -30,6 +31,13 @@ public class StudentController {
         Student student = studentService.getSpecificStudent(studentId);
         return student;
     }
+
+    @GetMapping("ids/{studentIds}")
+    public List<Student> getStudents(@PathVariable("studentIds") Set<Long> studentIds){
+        List<Student> student = studentService.getStudentByIds(studentIds);
+        return student;
+    }
+
 
 
     @PostMapping()
