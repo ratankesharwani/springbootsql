@@ -1,6 +1,8 @@
 package com.example.springbootsql.teacher.controller;
 
 import com.example.springbootsql.teacher.model.Teacher;
+import com.example.springbootsql.teacher.model.TeacherEmployeeRequest;
+import com.example.springbootsql.teacher.model.TeacherEmployeeResponse;
 import com.example.springbootsql.teacher.model.TeacherRequest;
 import com.example.springbootsql.teacher.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,13 @@ public class TeacherController {
     public Teacher createTeacher(@RequestBody TeacherRequest teacherRequest) {
         Teacher createdTeacher = teacherService.createTeacher(teacherRequest);
         return createdTeacher;
+    }
+
+
+    @PostMapping("teacher-employee")
+    public TeacherEmployeeResponse createTeacherEmployee(@RequestBody TeacherEmployeeRequest teacherEmployeeRequest) {
+        TeacherEmployeeResponse teacherEmployeeResponse = teacherService.createTeacherEmployee(teacherEmployeeRequest);
+        return teacherEmployeeResponse;
     }
 
 
