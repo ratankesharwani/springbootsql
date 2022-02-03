@@ -21,7 +21,10 @@ public class TeacherController {
     }
 
     @PostMapping
-    public Teacher createTeacher(@RequestBody TeacherRequest teacher) {
-        return teacherService.createTeacher(teacher);
+    public Teacher createTeacher(@RequestBody TeacherRequest teacherRequest) {
+        Teacher createdTeacher = teacherService.createTeacher(teacherRequest);
+        return createdTeacher;
     }
+
+
 }

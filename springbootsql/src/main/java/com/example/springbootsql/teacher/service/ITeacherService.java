@@ -8,5 +8,7 @@ import java.util.List;
 public interface ITeacherService {
     List<Teacher> getTeachers();
 
+    Teacher createTeacher(Teacher teacher);
     Teacher createTeacher(TeacherRequest teacher);
+
 }

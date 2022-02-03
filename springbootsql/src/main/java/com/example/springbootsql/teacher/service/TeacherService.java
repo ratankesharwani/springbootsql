@@ -20,6 +20,11 @@ public class TeacherService implements ITeacherService{
     }
 
     @Override
+    public Teacher createTeacher(Teacher teacher) {
+        return null;
+    }
+
+    @Override
     public Teacher createTeacher(TeacherRequest teacher) {
         Teacher newTeacher = new Teacher();
         newTeacher.setFirstNAme(teacher.getFirstNAme());
